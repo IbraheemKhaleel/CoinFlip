@@ -1,4 +1,3 @@
-  GNU nano 4.9.3                                                                        coinFlipSimulation.sh
 #!/bin/bash
 function coinFlip()
 {
