@@ -1,18 +1,23 @@
-#!/bin/bash 
+#!/bin/bash
+function coinFlip()
+{
+	local random=$1
+        if [[ $((random)) -eq 0 ]]
+        then
+                echo "It is a head "
+                ((H++))
+        else
+                echo "It is a tail "
+                ((T++))
+        fi
+} 
 H=0
 T=0
 echo "Coin flip simulation till 21 times is running "
 while [[ $((H)) -lt 21 && $((T)) -lt 21 ]]
 do
 	rand=$((RANDOM%2))
-	if [[ $((rand)) -eq 0 ]]
-	then
-		echo "It is a head "
-		((H++))
-	else
-		echo "It is a tail "
-		((T++))
-	fi
+	coinFlip $rand
 done
 if [[ $((H)) -eq 21 && $((T)) -eq 21 ]]
 then 
@@ -20,14 +25,7 @@ then
 	while [[ $((H-T)) -ge 2 ]]
 	do
 		rand=$((RANDOM%2))
-        	if [[ $((rand)) -eq 0 ]]
-        	then
-                	echo "It is a head "
-                	((H++))
-        	else
-                	echo "It is a tail "
-                	((T++))
-        	fi
+		coinFlip $rand
 	done
 	if [[ $((H)) -gt $((T)) ]]
 	then
